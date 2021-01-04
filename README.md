@@ -14,15 +14,21 @@ Base on nginx
 
     FROM alpine:latest
 
-    MAINTAINER alex <alexwhen@gmail.com>
+    MAINTAINER ashley <ashleylai58@gmail.com> 
 
     RUN apk --update add nginx
+
+    RUN mkdir -p /usr/share/nginx/html && \
+    mkdir -p /run/nginx
+
+    COPY default.conf /etc/nginx/conf.d/
 
     COPY 2048 /usr/share/nginx/html
 
     EXPOSE 80
 
     CMD ["nginx", "-g", "daemon off;"]
+
 
 # run the docker container with your own build
 
